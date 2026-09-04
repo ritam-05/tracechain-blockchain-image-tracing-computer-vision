@@ -1,0 +1,56 @@
+[System] Initializing AI Models & Blockchain connections...
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\1k3d68.onnx landmark_3d_68 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\2d106det.onnx landmark_2d_106 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\det_10g.onnx detection [1, 3, '?', '?'] 127.5 128.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\genderage.onnx genderage ['None', 3, 96, 96] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\w600k_r50.onnx recognition ['None', 3, 112, 112] 127.5 127.5
+set det-size: (640, 640)
+
+==================================================
+🕵️  TRACECHAIN PIPELINE STARTED
+Target: data/input/srk.webp
+==================================================
+
+[1/6] Scanning input image for facial embeddings...
+  ✓ Face detected and embedded.
+
+[2/6] Querying Google Lens via SerpApi...
+  -> Uploading data/input/srk.webp to SerpApi...
+  -> Upload successful (ID: 4Qy1qHicBcHBDcAgDAPAjarYgTqdphIJvPtjVrbp3TFvvJ-mHpJ7CiyNTK5CadHs2nN8LxTRAVr8Xr0Ngg). Querying Google Lens...
+  ✓ Found 5 visual matches.
+
+[3/6] Downloading candidate images for verification...
+  ✓ Downloaded candidate [1]: candidate_1.jpg
+  ✓ Downloaded candidate [2]: candidate_2.jpg
+  ✓ Downloaded candidate [3]: candidate_3.jpg
+  ✓ Downloaded candidate [4]: candidate_4.jpg
+  ✓ Downloaded candidate [5]: candidate_5.jpg
+
+[4/6] Cross-referencing web candidates with target embedding...
+  Candidate [1] Similarity: 0.9252 (Match: True)
+  Candidate [2] Similarity: 0.8941 (Match: True)
+  Candidate [3] Similarity: 0.9012 (Match: True)
+  Candidate [4] Similarity: 0.8631 (Match: True)
+  Candidate [5] Similarity: 0.8990 (Match: True)
+  ✓ Authentic match found! (Similarity: 0.9252)
+
+[5/6] Extracting metadata & generating cryptographic fingerprint...
+  Title      : Shah Rukh Khan: The Bollywood Star Marketers Need To ...
+  Source     : https://medium.com/better-marketing/shah-rukh-khan-the-bollywood-star-marketers-need-to-take-notes-from-a7e28ee866ab
+  Fingerprint: 0x1b4d7e632a3d596d838752c4b4230af3187ce6bf9c9c49aac0dcd416c2ec697f
+
+[6/6] Interacting with Ethereum Sepolia Blockchain...
+  -> Fingerprint is new. Registering on-chain...
+  -> Building blockchain transaction...
+  -> Signing and broadcasting to Sepolia... (Please wait ~15 seconds)
+
+🟢 SUCCESS: Content registered permanently!
+   Transaction Hash: 0xe61c73002cf1d7a4a7297661d9eb521be3bfecc02d5774f5b546eee7e429d2d3
+   View on Etherscan: https://sepolia.etherscan.io/tx/0xe61c73002cf1d7a4a7297661d9eb521be3bfecc02d5774f5b546eee7e429d2d3
+==================================================
+
