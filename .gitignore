@@ -1,0 +1,19 @@
+# Environments
+venv/
+env/
+.env.*
+!.env.example
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Hackathon specific data (we don't want to commit huge images/DBs)
+data/input/*
+!data/input/.gitkeep
+data/candidates/*
+!data/candidates/.gitkeep
+data/results/*
+!data/results/.gitkeep

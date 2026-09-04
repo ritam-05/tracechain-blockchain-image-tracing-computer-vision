@@ -1,0 +1,8 @@
+numpy<2
+insightface==0.7.3
+onnxruntime==1.17.1
+opencv-python==4.9.0.80
+google-search-results==2.4.2
+web3==6.15.1
+python-dotenv==1.0.1
+Pillow==10.2.0
