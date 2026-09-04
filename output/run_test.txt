@@ -1,0 +1,56 @@
+[System] Initializing AI Models & Blockchain connections...
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\1k3d68.onnx landmark_3d_68 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\2d106det.onnx landmark_2d_106 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\det_10g.onnx detection [1, 3, '?', '?'] 127.5 128.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\genderage.onnx genderage ['None', 3, 96, 96] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\w600k_r50.onnx recognition ['None', 3, 112, 112] 127.5 127.5
+set det-size: (640, 640)
+
+==================================================
+🕵️  TRACECHAIN PIPELINE STARTED
+Target: data/input/test.webp
+==================================================
+
+[1/6] Scanning input image for facial embeddings...
+  ✓ Face detected and embedded.
+
+[2/6] Querying Google Lens via SerpApi...
+  -> Uploading data/input/test.webp to SerpApi...
+  -> Upload successful (ID: hjVY4Hicu2lgamaelGxglmyRnJSabGKYbJCUbGpoaJRmlpZmmJpimKxXnppUEG9obmEBFDYwMQYAjC4OvA). Querying Google Lens...
+  ✓ Found 5 visual matches.
+
+[3/6] Downloading candidate images for verification...
+  ✓ Downloaded candidate [1]: candidate_1.jpg
+  ✓ Downloaded candidate [2]: candidate_2.jpg
+  ✓ Downloaded candidate [3]: candidate_3.jpg
+  ✓ Downloaded candidate [4]: candidate_4.jpg
+  ✓ Downloaded candidate [5]: candidate_5.jpg
+
+[4/6] Cross-referencing web candidates with target embedding...
+  Candidate [1] Similarity: 0.9653 (Match: True)
+  Candidate [2] Similarity: 0.8479 (Match: True)
+  Candidate [3] Similarity: 0.8779 (Match: True)
+  Candidate [4] Similarity: 0.9229 (Match: True)
+  Candidate [5] Similarity: 0.8769 (Match: True)
+  ✓ Authentic match found! (Similarity: 0.9653)
+
+[5/6] Extracting metadata & generating cryptographic fingerprint...
+  Title      : Page 2 | Man serious face Images - Free Download on Magnific ...
+  Source     : https://www.magnific.com/free-photos-vectors/man-serious-face/2
+  Fingerprint: 0xee998bc70e93c168f708fe51d9451f417d6abdd5229f9524a9a50d9a1968785f
+
+[6/6] Interacting with Ethereum Sepolia Blockchain...
+  -> Fingerprint is new. Registering on-chain...
+  -> Building blockchain transaction...
+  -> Signing and broadcasting to Sepolia... (Please wait ~15 seconds)
+
+🟢 SUCCESS: Content registered permanently!
+   Transaction Hash: 0x2bd49cc0240e6232493d112ba47f874402f165ddefebf480f178da27ae0c7dd2
+   View on Etherscan: https://sepolia.etherscan.io/tx/0x2bd49cc0240e6232493d112ba47f874402f165ddefebf480f178da27ae0c7dd2
+==================================================
+
