@@ -640,9 +640,9 @@ Possible future improvements include:
 
 ---
 
-## 18. Hackathon Demonstration
+## 18. Demo scenarios
 
-The recommended demonstration consists of two scenarios.
+The demonstration consists of two scenarios.
 
 ### Scenario 1 — Successful verification
 
