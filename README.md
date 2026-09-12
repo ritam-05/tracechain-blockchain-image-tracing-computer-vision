@@ -680,19 +680,7 @@ The second demonstration shows why the blockchain component exists rather than t
 
 ---
 
-## 19. License
-
-Add the project's chosen license here.
-
-Example:
-
-```text
-MIT License
-```
-
----
-
-## 20. Summary
+## 19. Summary
 
 TraceChain combines four technologies into one end-to-end pipeline:
 
