@@ -28,6 +28,95 @@ TraceChain addresses this by combining web discovery with blockchain-backed cont
 
 ## 2. Solution
 
+```mermaid
+flowchart TD
+
+subgraph group_runtime["CLI Pipeline"]
+  node_cli["CLI entry<br/>Python CLI<br/>[main.py]"]
+  node_pipeline["Pipeline orchestrator<br/>workflow<br/>[pipeline.py]"]
+  node_config["Runtime configuration<br/>environment config<br/>[config.py]"]
+  node_output[("CLI transcripts<br/>execution output")]
+end
+
+subgraph group_evidence["Visual Evidence"]
+  node_input[("Input images<br/>local staging")]
+  node_lens["Lens discovery<br/>SerpApi adapter<br/>[lens.py]"]
+  node_serpapi{{"Google Lens / SerpApi<br/>external discovery"}}
+  node_candidates[("Candidate images<br/>local staging")]
+  node_detector["Face embeddings<br/>InsightFace detector<br/>[detector.py]"]
+  node_matcher["Candidate validator<br/>cosine matcher<br/>[matcher.py]"]
+end
+
+subgraph group_record["Content Fingerprint"]
+  node_extractor["Content extraction<br/>provenance record builder<br/>[extractor.py]"]
+  node_canonicalizer["Canonical record<br/>deterministic serializer<br/>[canonicalizer.py]"]
+  node_hashing["SHA-256 fingerprint<br/>hashing<br/>[hashing.py]"]
+  node_results[("Result artifacts<br/>local output")]
+end
+
+subgraph group_chain["Ethereum Registry"]
+  node_ethereum["Ethereum adapter<br/>Web3.py adapter<br/>[ethereum.py]"]
+  node_registry["ContentRegistry<br/>Solidity registry"]
+  node_sepolia{{"Sepolia via Alchemy<br/>Ethereum RPC"}}
+  node_abi["Registry ABI<br/>contract interface"]
+  node_deploy["Contract deployment<br/>operational script<br/>[deploy.py]"]
+  node_verify["Contract verification<br/>operational script<br/>[verify_contract.py]"]
+end
+
+node_cli -->|"invokes"| node_pipeline
+node_config -.->|"settings"| node_pipeline
+node_pipeline -->|"reads image"| node_input
+node_pipeline -->|"embeds input"| node_detector
+node_pipeline -->|"searches visually"| node_lens
+node_lens -->|"queries"| node_serpapi
+node_lens -->|"stages results"| node_candidates
+node_candidates -->|"candidate images"| node_detector
+node_detector -->|"embeddings"| node_matcher
+node_pipeline -->|"validates candidates"| node_matcher
+node_matcher -->|"selected candidate"| node_extractor
+node_extractor -->|"content record"| node_canonicalizer
+node_canonicalizer -->|"canonical bytes"| node_hashing
+node_hashing -->|"fingerprint"| node_ethereum
+node_ethereum -.->|"uses interface"| node_abi
+node_ethereum -->|"RPC"| node_sepolia
+node_sepolia -->|"hosts"| node_registry
+node_pipeline -->|"writes record"| node_results
+node_pipeline -->|"writes transcript"| node_output
+node_deploy -->|"deploys"| node_registry
+node_verify -->|"verifies contract"| node_registry
+
+click node_cli "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/main.py"
+click node_pipeline "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/pipeline.py"
+click node_config "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/config.py"
+click node_input "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/tree/main/data/input"
+click node_lens "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/search/lens.py"
+click node_candidates "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/tree/main/data/candidates"
+click node_detector "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/face/detector.py"
+click node_matcher "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/face/matcher.py"
+click node_extractor "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/content/extractor.py"
+click node_canonicalizer "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/content/canonicalizer.py"
+click node_hashing "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/crypto/hashing.py"
+click node_results "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/tree/main/data/results"
+click node_ethereum "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/src/blockchain/ethereum.py"
+click node_registry "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/contracts/ContentRegistry.sol"
+click node_abi "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/abi/ContentRegistry.json"
+click node_deploy "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/scripts/deploy.py"
+click node_verify "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/blob/main/scripts/verify_contract.py"
+click node_output "https://github.com/ritam-05/blockchain-image-tracing-computer-vision/tree/main/output"
+
+classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
+classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
+classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
+classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
+classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
+classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
+classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
+class node_cli,node_pipeline,node_config,node_output toneBlue
+class node_input,node_lens,node_serpapi,node_candidates,node_detector,node_matcher toneAmber
+class node_extractor,node_canonicalizer,node_hashing,node_results toneMint
+class node_ethereum,node_registry,node_sepolia,node_abi,node_deploy,node_verify toneRose
+```
+
 TraceChain follows this pipeline:
 
 ```text
@@ -655,9 +744,9 @@ Possible future improvements include:
 
 ---
 
-## 18. Hackathon Demonstration
+## 18. Demo scenarios
 
-The recommended demonstration consists of two scenarios.
+The demonstration consists of two scenarios.
 
 ### Scenario 1 — Successful verification
 
