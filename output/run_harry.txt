@@ -1,0 +1,56 @@
+[System] Initializing AI Models & Blockchain connections...
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\1k3d68.onnx landmark_3d_68 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\2d106det.onnx landmark_2d_106 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\det_10g.onnx detection [1, 3, '?', '?'] 127.5 128.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\genderage.onnx genderage ['None', 3, 96, 96] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\w600k_r50.onnx recognition ['None', 3, 112, 112] 127.5 127.5
+set det-size: (640, 640)
+
+==================================================
+🕵️  TRACECHAIN PIPELINE STARTED
+Target: data/input/harry.webp
+==================================================
+
+[1/6] Scanning input image for facial embeddings...
+  ✓ Face detected and embedded.
+
+[2/6] Querying Google Lens via SerpApi...
+  -> Uploading data/input/harry.webp to SerpApi...
+  -> Upload successful (ID: tnLO1nicu2mQaJlsYpZslGRgZGxqkWiRZmRsnmhpYm5hamxoYGGZlqpXnppUEG9obgEUMTc3NwQAa0YNmA). Querying Google Lens...
+  ✓ Found 5 visual matches.
+
+[3/6] Downloading candidate images for verification...
+  ✓ Downloaded candidate [1]: candidate_1.jpg
+  ✓ Downloaded candidate [2]: candidate_2.jpg
+  ✓ Downloaded candidate [3]: candidate_3.jpg
+  ✓ Downloaded candidate [4]: candidate_4.jpg
+  ✓ Downloaded candidate [5]: candidate_5.jpg
+
+[4/6] Cross-referencing web candidates with target embedding...
+  Candidate [1] Similarity: 0.8640 (Match: True)
+  Candidate [2] Similarity: 0.8098 (Match: True)
+  Candidate [3] Similarity: 0.8499 (Match: True)
+  Candidate [4] Similarity: 0.7978 (Match: True)
+  Candidate [5] Similarity: 0.6861 (Match: True)
+  ✓ Authentic match found! (Similarity: 0.8640)
+
+[5/6] Extracting metadata & generating cryptographic fingerprint...
+  Title      : Happy birthday Harry Potter #happybirthdayharrypotter ...
+  Source     : https://www.instagram.com/p/Dbe0L_elIeP/
+  Fingerprint: 0x4c4dbe9475b1b83f19cb7671fa2c836eb307114e6970cc16103a55f21de507a6
+
+[6/6] Interacting with Ethereum Sepolia Blockchain...
+  -> Fingerprint is new. Registering on-chain...
+  -> Building blockchain transaction...
+  -> Signing and broadcasting to Sepolia... (Please wait ~15 seconds)
+
+🟢 SUCCESS: Content registered permanently!
+   Transaction Hash: 0xce775ebcb81ebf54eb5cbe719a394f6c2dd79971544e08bc2a442fd92b09cb9d
+   View on Etherscan: https://sepolia.etherscan.io/tx/0xce775ebcb81ebf54eb5cbe719a394f6c2dd79971544e08bc2a442fd92b09cb9d
+==================================================
+

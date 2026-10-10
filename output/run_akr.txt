@@ -1,0 +1,56 @@
+[System] Initializing AI Models & Blockchain connections...
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\1k3d68.onnx landmark_3d_68 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\2d106det.onnx landmark_2d_106 ['None', 3, 192, 192] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\det_10g.onnx detection [1, 3, '?', '?'] 127.5 128.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\genderage.onnx genderage ['None', 3, 96, 96] 0.0 1.0
+Applied providers: ['CPUExecutionProvider'], with options: {'CPUExecutionProvider': {}}
+find model: C:\Users\ritam/.insightface\models\buffalo_l\w600k_r50.onnx recognition ['None', 3, 112, 112] 127.5 127.5
+set det-size: (640, 640)
+
+==================================================
+🕵️  TRACECHAIN PIPELINE STARTED
+Target: data/input/akr.jpg
+==================================================
+
+[1/6] Scanning input image for facial embeddings...
+  ✓ Face detected and embedded.
+
+[2/6] Querying Google Lens via SerpApi...
+  -> Uploading data/input/akr.jpg to SerpApi...
+  -> Upload successful (ID: 0nXg5Xicu2mQlmhmkGSYYpJoYWBuaGqRlJiYZGiYbJFqmpJoaJKckqqXVZCaHm9obmlobGlmYmkAAIoBDrc). Querying Google Lens...
+  ✓ Found 5 visual matches.
+
+[3/6] Downloading candidate images for verification...
+  ✓ Downloaded candidate [1]: candidate_1.jpg
+  ✓ Downloaded candidate [2]: candidate_2.jpg
+  ✓ Downloaded candidate [3]: candidate_3.jpg
+  ✓ Downloaded candidate [4]: candidate_4.jpg
+  ✓ Downloaded candidate [5]: candidate_5.jpg
+
+[4/6] Cross-referencing web candidates with target embedding...
+  Candidate [1] Similarity: 1.0000 (Match: True)
+  Candidate [2] Similarity: 0.9677 (Match: True)
+  Candidate [3] Similarity: 0.9271 (Match: True)
+  Candidate [4] Similarity: 0.3212 (Match: False)
+  Candidate [5] Similarity: 0.2102 (Match: False)
+  ✓ Authentic match found! (Similarity: 1.0000)
+
+[5/6] Extracting metadata & generating cryptographic fingerprint...
+  Title      : Dr. S. Ananthakumaran Reddy - Associate Professor Grade-II ...
+  Source     : https://in.linkedin.com/in/dr-s-ananthakumaran-reddy-776bb9144
+  Fingerprint: 0x61cb813f0b71f7b6fd13994733eae15d712b443190f2139e82b19d4f2d8d0b35
+
+[6/6] Interacting with Ethereum Sepolia Blockchain...
+  -> Fingerprint is new. Registering on-chain...
+  -> Building blockchain transaction...
+  -> Signing and broadcasting to Sepolia... (Please wait ~15 seconds)
+
+🟢 SUCCESS: Content registered permanently!
+   Transaction Hash: 0x947270361d5a4f763373995624cad4209ac859a08539c5c0108edcf050cef71f
+   View on Etherscan: https://sepolia.etherscan.io/tx/0x947270361d5a4f763373995624cad4209ac859a08539c5c0108edcf050cef71f
+==================================================
+

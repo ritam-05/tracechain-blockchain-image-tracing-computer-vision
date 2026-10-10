@@ -120,6 +120,21 @@ Candidate URLs + Images
 
 ---
 
+### SerpApi Integration
+
+TraceChain uses SerpApi's **Google Lens API** service (`engine=google_lens`) for reverse-image search. It does not use SerpApi's regular Google web-search service for the discovery pipeline.
+
+For each run, the application:
+
+1. Uploads the local input image to SerpApi's image-upload endpoint (`https://serpapi.com/image`) using `SERPAPI_KEY`.
+2. Receives a temporary `image_id` for that upload.
+3. Sends a Google Lens request through the SerpApi Python client with `engine=google_lens`, the `image_id`, and `hl=en`.
+4. Reads the `visual_matches` returned by Google Lens and uses each result's title, source link, and thumbnail/original image URL as a candidate for face-based verification.
+
+This integration requires a SerpApi account with access to the Google Lens API and a valid `SERPAPI_KEY` in `.env`. SerpApi is used only to discover visually similar web content; matching, hashing, and blockchain registration are performed locally by TraceChain.
+
+---
+
 ### Face-Based Candidate Verification
 
 Google Lens results are treated as candidates rather than automatically accepted as matches.
